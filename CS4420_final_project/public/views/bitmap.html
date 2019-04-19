@@ -1,0 +1,60 @@
+<div class="jumbotron text-center" ng-app="">
+	<style>
+		th , td  {
+		  border: 1px solid black;
+		  border-collapse: collapse;
+		  padding: 5px;
+		}
+		table {
+  		  border-collapse: collapse;
+  		  padding: 5px;
+  		  display: inline-block;
+		}
+		table tr:nth-child(odd) {
+		  background-color: #f0f0f0;
+		}
+		table tr:nth-child(even) {
+		  background-color: #ffffff;
+		}
+	</style>
+	<h1>Run-Length Encoding</h1>
+	<p> Enter a data set. Each data point should be separated by a comma.</p>
+
+	<!-- TODO remove runLengthCompressionList.addDataPoint() and add correct method   -->
+
+
+
+	<form ng-submit="rleCompression()">
+        <input type="text" ng-model="data"  size="30"
+               placeholder="e.g a, a, a, b, b, c, a, a, a" ng-list>
+        <input type="submit" value="Apply Run-Length Compression">
+	</form>
+
+
+	<!--
+	<p>What the backing array looks like, for testing purposes only, remove when done: {{ compressedData }}</p>
+	-->
+
+	<table style="width:20%">
+		<tr>
+			<th>Index</th>
+			<th>Data</th>
+		</tr>
+		<tr ng-repeat="x in data track by $index">
+			<td>{{$index}}</td>
+			<td>{{x}}</td>
+		</tr>
+	</table>
+
+	       <table style="width:20%">
+	               <tr>
+	                       <th>Compressed Data</th>
+	               </tr>
+	               <tr ng-repeat="x in compressedData track by $index">
+
+	                       <td>{{x}},{{compressedDataOffset[$index]}},{{compressedDataSize[$index]}}</td>
+	               </tr>
+
+	</table>
+
+</div>
